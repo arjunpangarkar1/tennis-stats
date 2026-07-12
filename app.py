@@ -126,10 +126,15 @@ Reply with exactly: ANSWERABLE
 for any question that can be computed from those columns, even if it uses words like
 "clutch" or "best" — as long as it maps to a measurable stat.
 
-Reply with: SUBJECTIVE (followed by a brief note on what stats could inform it)
-ONLY for questions that cannot be settled by any single statistic — e.g. "who is the
-GOAT?", "is Federer better than Nadal?", "who is the greatest player ever?" — where the
-answer depends on which achievements one values.""",
+Reply with: SUBJECTIVE
+ONLY for these narrow cases:
+- "Who is the GOAT / greatest of all time?"
+- "Is [player X] better than [player Y]?" (direct player-vs-player greatness comparison)
+- Questions with no measurable target at all.
+
+EVERYTHING ELSE IS ANSWERABLE. In particular, "who is the best at [tournament]",
+"who is the best on [surface]", "who is the best server" are ALL ANSWERABLE —
+they map to win rate or a specific stat. Default to ANSWERABLE when in doubt.""",
             messages=[{"role": "user", "content": question}],
         )
         verdict = check.content[0].text.strip()
