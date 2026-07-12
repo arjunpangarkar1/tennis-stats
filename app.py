@@ -14,7 +14,7 @@ import subprocess
 def get_connection():
     if not os.path.exists("tennis.db"):
         subprocess.run(["python", "load_data.py"], check=True)
-    return duckdb.connect("tennis.db", read_only=True)
+    return duckdb.connect("tennis.db")
 
 con = get_connection()
 client = anthropic.Anthropic()
