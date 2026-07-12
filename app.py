@@ -1,3 +1,4 @@
+import sys
 import streamlit as st
 import anthropic
 import duckdb
@@ -13,7 +14,7 @@ import subprocess
 @st.cache_resource
 def get_connection():
     if not os.path.exists("tennis.db"):
-        subprocess.run(["python", "load_data.py"], check=True)
+        subprocess.run([sys.executable, "load_data.py"], check=True)
     return duckdb.connect("tennis.db")
 
 con = get_connection()
