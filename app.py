@@ -7,6 +7,12 @@ st.set_page_config(page_title="Tennis Clutch Engine", page_icon="🎾")
 st.title("🎾 Ask the Tennis Data")
 st.caption("ATP singles matches, 2000–2026. Every answer comes from real match data.")
 
+import os
+
+if not os.path.exists("tennis.db"):
+    with st.spinner("Building the database (first run only)..."):
+        import load_data
+
 con = duckdb.connect("tennis.db", read_only=True)
 client = anthropic.Anthropic()
 
