@@ -25,3 +25,5 @@ for year in range(2000, 2027):
 
 total = con.sql("SELECT count(*) FROM matches").fetchone()[0]
 print(f"\nDone. {total} total matches across all years.")
+
+con.close()
