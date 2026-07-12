@@ -25,6 +25,8 @@ Table: matches — one row per ATP match, 2000 through 2026 (~78,000 matches).
 Key columns:
 - year (int): season, 2000-2026
 - winner_name, loser_name (text)
+- tourney_name (text): tournament name, e.g. 'Wimbledon', 'Roland Garros', 'Us Open', 'Australian Open', 'Indian Wells'
+- tourney_level (text): 'G' = Grand Slam, 'M' = Masters 1000, 'A' = ATP tour, 'F' = Tour Finals
 - surface (text): 'Hard', 'Clay', 'Grass', or 'Carpet' (Carpet only appears in older years, phased out after ~2009)
 - round (text): 'F' final, 'SF' semi, 'QF' quarter, 'R16', 'R32', etc.
 - score (text)
@@ -76,6 +78,8 @@ IMPORTANT RULES:
      → break point save rate = sum(saved) * 100.0 / sum(faced)
 
    - "most wins", "most matches won" → simple count of wins
+   - Questions about a SPECIFIC TOURNAMENT (e.g. "at Wimbledon", "at the US Open")
+     must filter on tourney_name, NOT on surface. Wimbledon ≠ all grass courts.
 
    Do NOT use break point save rate for "best" questions. Break point save rate
    measures serving under pressure — it is NOT a measure of overall quality.
