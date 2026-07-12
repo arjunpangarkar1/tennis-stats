@@ -8,12 +8,15 @@ st.title("🎾 Ask the Tennis Data")
 st.caption("ATP singles matches, 2000–2026. Every answer comes from real match data.")
 
 import os
+import subprocess
 
-if not os.path.exists("tennis.db"):
-    with st.spinner("Building the database (first run only)..."):
-        import load_data
+@st.cache_resource
+def get_connection():
+    if not os.path.exists("tennis.db"):
+        subprocess.run(["python", "load_data.py"], check=True)
+    return duckdb.connect("tennis.db", read_only=True)
 
-con = duckdb.connect("tennis.db", read_only=True)
+con = get_connection()
 client = anthropic.Anthropic()
 
 SCHEMA = """
