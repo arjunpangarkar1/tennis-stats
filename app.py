@@ -92,7 +92,15 @@ IMPORTANT RULES:
    QUALIFY ROW_NUMBER() OVER (PARTITION BY surface ORDER BY clutch_rate DESC) = 1
 """
 
+if "count" not in st.session_state:
+    st.session_state.count = 0
+
+if st.session_state.count >= 10:
+    st.warning("You've hit the question limit for this session. Refresh to reset — but be kind, this runs on my API credits!")
+    st.stop()
 question = st.text_input("Ask away:", placeholder="Who is the most clutch player on clay?")
+if question:
+    st.session_state.count += 1
 
 if question:
     with st.spinner("Checking the question..."):
