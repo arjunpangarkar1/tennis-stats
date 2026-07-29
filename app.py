@@ -203,7 +203,7 @@ Rules:
 
     st.success(answer.content[0].text)
 
-    st.dataframe(result_df)
+    st.dataframe(result_df, hide_index=True)
 
     with st.expander("See the SQL that produced this"):
         st.code(sql, language="sql")
