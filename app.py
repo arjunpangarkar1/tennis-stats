@@ -3,7 +3,7 @@ import streamlit as st
 import anthropic
 import duckdb
 
-st.set_page_config(page_title="Tennis Clutch Engine", page_icon="🎾")
+st.set_page_config(page_title="Tennis Clutch Engine", page_icon="🎾", layout="centered")
 
 st.title("🎾 Ask the Tennis Data")
 st.caption("ATP singles matches, 2000–2026. Every answer comes from real match data.")
