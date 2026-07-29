@@ -4,9 +4,64 @@ import anthropic
 import duckdb
 
 st.set_page_config(page_title="Tennis Clutch Engine", page_icon="🎾", layout="centered")
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500;600&display=swap');
 
-st.title("🎾 Ask the Tennis Data")
-st.caption("ATP singles matches, 2000–2026. Every answer comes from real match data.")
+.block-container { max-width: 820px; padding-top: 4rem; padding-bottom: 4rem; }
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
+.tc-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 3.4rem;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #1B3D2F;
+  margin: 0 0 0.7rem 0;
+}
+.tc-rule { height: 4px; width: 64px; background: #52247F; margin-bottom: 1.1rem; }
+.tc-sub { font-size: 1rem; color: #5A6B60; margin-bottom: 2.5rem; }
+
+.stTextInput input {
+  font-size: 1.15rem;
+  padding: 1rem 1.1rem;
+  border: 2px solid #D8CFB4;
+  border-radius: 10px;
+  background: #FFFDF6;
+  color: #1B3D2F;
+}
+.stTextInput input:focus { border-color: #52247F; box-shadow: none; }
+.stTextInput label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: #5A6B60;
+}
+
+[data-testid="stAlert"] {
+  background: #FFFDF6;
+  border: none;
+  border-left: 5px solid #52247F;
+  border-radius: 8px;
+  padding: 1.4rem 1.5rem;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: #1B3D2F;
+}
+[data-testid="stAlert"] p { color: #1B3D2F; }
+
+[data-testid="stDataFrame"] { border: 1px solid #D8CFB4; border-radius: 8px; }
+[data-testid="stExpander"] { border: 1px solid #D8CFB4; border-radius: 8px; background: #FFFDF6; }
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="tc-title">Ask the<br>Tennis Data</div>
+<div class="tc-rule"></div>
+<div class="tc-sub">78,000 ATP singles matches, 2000–2026. Every answer is generated from real match data — never guessed.</div>
+""", unsafe_allow_html=True)
 
 import os
 import subprocess
